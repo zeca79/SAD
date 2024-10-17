@@ -46,15 +46,41 @@ onde a velocidade de cálculo é crucial.
 
 ![](https://iili.io/JpMIfta.png)
 
-#### Simulação
-
-Após ser testada em simulação, a SAD V1 se comportou conforme o esperado. No entanto, é praticamente impossível verificar todas as combinações possíveis de entradas utilizando o **ModelSim** e um arquivo de **estimulus.do**. Apesar dessa limitação, todas as combinações testadas funcionaram corretamente.
-
-![](https://iili.io/JpVNvsa.png)
 
 #### FSM
 
 ![](https://iili.io/JpMIWNe.png)
+
+#### Simulação
+
+Após ser testada em simulação, a SAD V1 se comportou conforme o esperado. No entanto, é praticamente impossível verificar todas as combinações possíveis de entradas utilizando o **ModelSim** e um arquivo de **estimulus.do**. Apesar dessa limitação, todas as combinações testadas funcionaram corretamente.
+
+**Estimulos.do**
+
+```vhdl
+force -repeat 10ns /clk 0 0ns, 1 5ns
+force /enable 0 0ns, 1 10ns, 0 60ns -r 2000ns 
+force /reset 0 0ns -r 2000ns
+
+#force /sample_ori 00000000 0ns -r 2000ns
+#force /sample_can 00000000 0ns -r 2000ns
+
+#force /sample_ori 00000001 0ns -r 2000ns
+#force /sample_can 00000000 0ns -r 2000ns
+
+#force /sample_ori 00000000 0ns -r 2000ns
+#force /sample_can 11111111 0ns -r 2000ns
+#255:11111111 SAD:16.320
+
+force /sample_ori 00111010 0ns -r 2000ns
+force /sample_can 01101000 0ns -r 2000ns
+#104:01101000 58:00111010 SAD:2.944
+
+run 2000ns
+
+```
+
+![](https://iili.io/JpVNvsa.png)
 
 ### 📄 V3 - 4 amostras de cada bloco por vez; barreira de registradores na entrada e na saída
 
@@ -70,4 +96,4 @@ Aumentando o paralelismo do B.O.
 
 Após ser testada em simulação, a SAD V3 também se comportou conforme o esperado com as combinações apresentadas.
 
-![](https://iili.io/JpMvTNI.png)
+![](https://i.ibb.co/crS4g7d/wave.png)
