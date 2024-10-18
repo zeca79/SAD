@@ -1,18 +1,18 @@
-# <h1 align="center">Relatório Prático II</h1>
+# <h1 align="center">💻 Relatório Prático II</h1>
 
 Atividade Prática para, desenvolvimento (descrição e síntese em VHDL) e testes (análise de temporização e simulação) da SAD  (Sum of Absolute Differences)
 
-* V1: 1 amostra de cada bloco por vez; barreira de registradores na entrada e na saída
-* V3: 4 amostras de cada bloco por vez; barreira de registradores na entrada e na saída
+* [V1:](https://github.com/zeca79/SAD/edit/main/README.md#-v1---1-amostra-de-cada-bloco-por-vez-barreira-de-registradores-na-entrada-e-na-sa%C3%ADda) 1 amostra de cada bloco por vez; barreira de registradores na entrada e na saída
+* [V3:](https://github.com/zeca79/SAD/edit/main/README.md#-v3---4-amostras-de-cada-bloco-por-vez-barreira-de-registradores-na-entrada-e-na-sa%C3%ADda) 4 amostras de cada bloco por vez; barreira de registradores na entrada e na saída
 
 ## ✒️ Alunos Grupo-13
 
 - Gabriel Raul Marino (Matrícula 20204843)
 - Marco Jose Pedro (Matrícula 20105254)
 
-## 📄 SAD (Sum of Absolute Differences)
+## 📁 SAD
 
-### O que é uma SAD (Sum of Absolute Differences)
+### O que é uma SAD
 
 A SAD (Sum of Absolute Differences, ou Soma das Diferenças Absolutas) é uma medida frequentemente usada em processamento de imagens e visão computacional 
 para comparar blocos de pixels entre duas imagens ou duas partes de uma imagem. 
@@ -24,11 +24,11 @@ A ideia básica é calcular a soma das diferenças absolutas entre pixels corres
 2. **Cálculo das Diferenças:** Para cada par de pixels correspondentes (um de cada bloco), calcula-se a diferença absoluta. A diferença absoluta é simplesmente o valor absoluto da diferença entre os valores de intensidade dos dois pixels.
 3. **Soma das Diferenças:** As diferenças absolutas calculadas no passo anterior são somadas para obter um único valor, que é a SAD.
 
-Matematicamente, se `A`  e `B` são os dois blocos de imagens a serem comparados, a SAD é calculada como:
+Matematicamente, se <kbd>**A**</kbd> e <kbd>**B**</kbd> são os dois blocos de imagens a serem comparados, a SAD é calculada como:
 
-`{SAD}=\sum_{i,j}|A(i,j)-B(i,j)|`
+<kbd>**{SAD}=\sum_{i,j}|A(i,j)-B(i,j)|**</kbd> 
 
-onde `(i,j)` são as coordenadas dos pixels dentro dos blocos.
+onde <kbd>**(i,j)**</kbd> são as coordenadas dos pixels dentro dos blocos.
 
 A SAD é uma medida simples e eficiente que proporciona uma estimativa da similaridade entre dois blocos de imagens. 
 Quanto menor o valor da SAD, mais similares são os blocos. Por sua simplicidade, a SAD é amplamente utilizada em aplicações em tempo real, 
@@ -38,27 +38,41 @@ onde a velocidade de cálculo é crucial.
 
 #### Especificação do Comportamento
 
-- Quando `iniciar = 1` o sistema realiza o cálculo descrito na equação do somatório de forma sequencial:
-  - Lê um par de amostras de `Mem_A` e de `Mem_B` e as armazena nas variáveis `pA` e `pB`, respectivamente.
-  - Calcula `ABS(pA - pB)` e acumula o resultado.
+- Quando <kbd>**iniciar = 1**</kbd> o sistema realiza o cálculo descrito na equação do somatório de forma sequencial:
+  - Lê um par de amostras de <kbd>**Mem_A**</kbd> e de <kbd>**Mem_B**</kbd> e as armazena nas variáveis <kbd>**pA**</kbd> e <kbd>**pB**</kbd>, respectivamente.
+  - Calcula <kbd>**ABS(pA - pB)**</kbd> e acumula o resultado.
 - Quando terminar, o resultado da SAD deve ser mostrado com a máxima precisão, i.e., jamais ocorre overflow.
-- O resultado mais recente de SAD deve estar disponível na saída `SAD` até o momento em que um novo cálculo de SAD tenha sido concluído.
+- O resultado mais recente de SAD deve estar disponível na saída <kbd>**SAD**</kbd> até o momento em que um novo cálculo de SAD tenha sido concluído.
 
 ![](https://iili.io/JpMIfta.png)
 
 
-#### FSM
+#### FSM 
+
+Máquinas de estados finitos – Finite State Machines (FSM)
 
 ![](https://iili.io/JpMIWNe.png)
+*FSM pedido*
+
+![](https://i.ibb.co/dbrLJKs/FSM.png)
+*FSM RTL Viewer*
+
+![](https://i.ibb.co/cXXGGkm/BO1.png)
+*Bloco Operativo RTL Viewer*
+
+![](https://i.ibb.co/nj2xqf2/bc.png)
+*Bloco de Controle*
 
 #### Simulação
 
-Após ser testada em simulação, a SAD V1 se comportou conforme o esperado. No entanto, é praticamente impossível verificar todas as combinações possíveis de entradas utilizando o **ModelSim** e um arquivo de **estimulus.do**. Apesar dessa limitação, todas as combinações testadas funcionaram corretamente.
+Após ser testada em simulação, a SAD V1 se comportou conforme o esperado. No entanto, é praticamente impossível verificar todas as combinações possíveis de entradas utilizando o **ModelSim** e um arquivo de **estimulus.do**. Sendo assim foram testadas as principais combinações de entradas com os resultados esperado da SAD e todas as combinações funcionaram corretamente.
+A frequência máxima (*Fmax*) apontada no *TimeQuest Timing Analyzer* foi de **206.1 MHz**, com isso o <kbd>Clock</kbd> foi configurado para <kbd>**5ns**</kbd>, pois 
+<kbd>**1/206.1^<sup>6</sup>= 4,85^<sup>-9</sup>**</kbd> 
 
 **Estimulos.do**
 
 ```vhdl
-force -repeat 10ns /clk 0 0ns, 1 5ns
+force -repeat 5ns /clk 0 0ns, 1 2.5ns
 force /enable 0 0ns, 1 10ns, 0 60ns -r 2000ns 
 force /reset 0 0ns -r 2000ns
 
