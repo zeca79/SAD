@@ -3,7 +3,7 @@
 Atividade Prática para, desenvolvimento (descrição e síntese em VHDL) e testes (análise de temporização e simulação) da SAD  (Sum of Absolute Differences)
 
 * [V1:](https://github.com/zeca79/SAD/blob/main/README.md#-v1---1-amostra-de-cada-bloco-por-vez-barreira-de-registradores-na-entrada-e-na-sa%C3%ADda) 1 amostra de cada bloco por vez; barreira de registradores na entrada e na saída
-* [V3:](https://github.com/zeca79/SAD/edit/main/README.md#-v3---4-amostras-de-cada-bloco-por-vez-barreira-de-registradores-na-entrada-e-na-sa%C3%ADda) 4 amostras de cada bloco por vez; barreira de registradores na entrada e na saída
+* [V3:](https://github.com/zeca79/SAD/blob/main/README.md#-v3---4-amostras-de-cada-bloco-por-vez-barreira-de-registradores-na-entrada-e-na-sa%C3%ADda) 4 amostras de cada bloco por vez; barreira de registradores na entrada e na saída
 
 ## ✒️ Alunos Grupo-13
 
