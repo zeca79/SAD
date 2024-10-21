@@ -26,7 +26,7 @@ A ideia básica é calcular a soma das diferenças absolutas entre amostras corr
 
 Matematicamente, se <kbd>**A**</kbd> e <kbd>**B**</kbd> são os dois blocos de imagens a serem comparados, a SAD é calculada como:
 
-<kbd>**{SAD}=\sum_{i,j}|A(i,j)-B(i,j)|**</kbd> 
+<kbd>**{SAD}=sum_{i,j}|A(i,j)-B(i,j)|**</kbd> 
 
 onde <kbd>**(i,j)**</kbd> são as coordenadas dos pixels dentro dos blocos.
 
