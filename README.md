@@ -18,10 +18,10 @@ A SAD (Sum of Absolute Differences, ou Soma das Diferenças Absolutas) é uma me
 para comparar blocos de pixels entre duas imagens ou duas partes de uma imagem. 
 A SAD é utilizada, por exemplo, em algoritmos de compressão de vídeo e de reconhecimento de padrões.
 
-A ideia básica é calcular a soma das diferenças absolutas entre pixels correspondentes de dois blocos de imagens. Isso é feito da seguinte maneira:
+A ideia básica é calcular a soma das diferenças absolutas entre amostras correspondentes de dois blocos de imagens. Isso é feito da seguinte maneira:
 
 1. **Seleção de Blocos:** Dois blocos de imagens são escolhidos, um de cada imagem ou de partes diferentes da mesma imagem.
-2. **Cálculo das Diferenças:** Para cada par de pixels correspondentes (um de cada bloco), calcula-se a diferença absoluta. A diferença absoluta é simplesmente o valor absoluto da diferença entre os valores de intensidade dos dois pixels.
+2. **Cálculo das Diferenças:** Para cada par de amostra correspondentes (uma de cada bloco), calcula-se a diferença absoluta. 
 3. **Soma das Diferenças:** As diferenças absolutas calculadas no passo anterior são somadas para obter um único valor, que é a SAD.
 
 Matematicamente, se <kbd>**A**</kbd> e <kbd>**B**</kbd> são os dois blocos de imagens a serem comparados, a SAD é calculada como:
@@ -31,8 +31,7 @@ Matematicamente, se <kbd>**A**</kbd> e <kbd>**B**</kbd> são os dois blocos de i
 onde <kbd>**(i,j)**</kbd> são as coordenadas dos pixels dentro dos blocos.
 
 A SAD é uma medida simples e eficiente que proporciona uma estimativa da similaridade entre dois blocos de imagens. 
-Quanto menor o valor da SAD, mais similares são os blocos. Por sua simplicidade, a SAD é amplamente utilizada em aplicações em tempo real, 
-onde a velocidade de cálculo é crucial.
+Quanto menor o valor da SAD, mais similares são os blocos. Por sua simplicidade, a SAD é amplamente utilizada em aplicações em tempo real, onde a velocidade de cálculo é crucial.
 
 ### 📄 V1 - 1 amostra de cada bloco por vez; barreira de registradores na entrada e na saída
 
@@ -52,20 +51,20 @@ onde a velocidade de cálculo é crucial.
 Máquinas de estados finitos – Finite State Machines (FSM)
 
 ![](https://iili.io/JpMIWNe.png)
-*FSM pedido*
+*FSM pedido na atividade*
 
 ![](https://i.ibb.co/dbrLJKs/FSM.png)
-*FSM RTL Viewer*
+*FSM gerado no RTL Viewer*
 
 ![](https://i.ibb.co/cXXGGkm/BO1.png)
 *Bloco Operativo RTL Viewer*
 
 ![](https://i.ibb.co/nj2xqf2/bc.png)
-*Bloco de Controle*
+*Bloco de Controle RTL Viewer*
 
 #### Simulação
 
-Após ser testada em simulação, a SAD V1 se comportou conforme o esperado. No entanto, é praticamente impossível verificar todas as combinações possíveis de entradas utilizando o **ModelSim** e um arquivo de **estimulus.do**. Sendo assim foram testadas as principais combinações de entradas com os resultados esperado da SAD e todas as combinações funcionaram corretamente.
+Após ser testada em simulação, a SAD V1 se comportou conforme o esperado. No entanto, é praticamente impossível verificar todas as combinações possíveis de entradas utilizando o **ModelSim** e um arquivo de **estimulus.do**. Sendo assim foram testadas as principais combinações de entradas com os resultados esperado da SAD (matrizes zeradas, aleatórias e uma zerada com a outra cheia para teste de *overflow*) e em todas as combinações funcionou corretamente.
 A frequência máxima (*Fmax*) apontada no *TimeQuest Timing Analyzer* foi de **206.1 MHz**, com isso o <kbd>Clock</kbd> foi configurado para <kbd>**5ns**</kbd>, pois 
 <kbd>**1/206.1^<sup>6</sup>= 4,85^<sup>-9</sup>**</kbd> 
 
