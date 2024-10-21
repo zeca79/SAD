@@ -38,7 +38,7 @@ Quanto menor o valor da SAD, mais similares são os blocos. Por sua simplicidade
 #### Especificação do Comportamento
 
 - Quando <kbd>**iniciar = 1**</kbd> o sistema realiza o cálculo descrito na equação do somatório de forma sequencial:
-  - Lê um par de amostras de <kbd>**Mem_A**</kbd> e de <kbd>**Mem_B**</kbd> e as armazena nas variáveis <kbd>**pA**</kbd> e <kbd>**pB**</kbd>, respectivamente.
+  - Lê um par de amostras de <kbd>**Mem_A**</kbd> e de <kbd>**Mem_B**</kbd> e as armazena nos registradores <kbd>**pA**</kbd> e <kbd>**pB**</kbd>, respectivamente.
   - Calcula <kbd>**ABS(pA - pB)**</kbd> e acumula o resultado.
 - Quando terminar, o resultado da SAD deve ser mostrado com a máxima precisão, i.e., jamais ocorre overflow.
 - O resultado mais recente de SAD deve estar disponível na saída <kbd>**SAD**</kbd> até o momento em que um novo cálculo de SAD tenha sido concluído.
