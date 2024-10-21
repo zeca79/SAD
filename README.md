@@ -28,7 +28,7 @@ Matematicamente, se <kbd>**A**</kbd> e <kbd>**B**</kbd> são os dois blocos de i
 
 <kbd>**{SAD}=sum_{i,j}|A(i,j)-B(i,j)|**</kbd> 
 
-onde <kbd>**(i,j)**</kbd> são as coordenadas dos pixels dentro dos blocos.
+onde <kbd>**(i,j)**</kbd> são as coordenadas das amostras dentro dos blocos.
 
 A SAD é uma medida simples e eficiente que proporciona uma estimativa da similaridade entre dois blocos de imagens. 
 Quanto menor o valor da SAD, mais similares são os blocos. Por sua simplicidade, a SAD é amplamente utilizada em aplicações em tempo real, onde a velocidade de cálculo é crucial.
